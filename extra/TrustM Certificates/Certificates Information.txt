@@ -1,0 +1,242 @@
+Trust M device certification
+
+# Trust M 0xE0E0 certificate with TLV
+pi@raspberrypi:~/projects/cli-optiga-trust-m-20190527/bin$ ./trustm_data -r 0xe0e0 -o cert.der
+
+========================================================
+Device Certificate       [0xE0E0] [Size 0487] :
+        c0 01 e4 00 01 e1 00 01 de 30 82 01 da 30 82 01
+        81 a0 03 02 01 02 02 02 01 02 30 0a 06 08 2a 86
+        48 ce 3d 04 03 02 30 77 31 0b 30 09 06 03 55 04
+        06 13 02 44 45 31 21 30 1f 06 03 55 04 0a 0c 18
+        49 6e 66 69 6e 65 6f 6e 20 54 65 63 68 6e 6f 6c
+        6f 67 69 65 73 20 41 47 31 13 30 11 06 03 55 04
+        0b 0c 0a 4f 50 54 49 47 41 28 54 4d 29 31 30 30
+        2e 06 03 55 04 03 0c 27 49 6e 66 69 6e 65 6f 6e
+        20 4f 50 54 49 47 41 28 54 4d 29 20 54 72 75 73
+        74 20 4d 20 54 65 73 74 20 43 41 20 30 30 30 30
+        1e 17 0d 31 39 30 33 31 34 31 33 32 34 30 38 5a
+        17 0d 33 39 30 33 31 35 31 33 32 34 30 38 5a 30
+        1c 31 1a 30 18 06 03 55 04 03 0c 11 49 6e 66 69
+        6e 65 6f 6e 20 49 6f 54 20 4e 6f 64 65 30 59 30
+        13 06 07 2a 86 48 ce 3d 02 01 06 08 2a 86 48 ce
+        3d 03 01 07 03 42 00 04 dd eb c6 98 99 f9 26 0f
+        69 a9 13 ad f0 38 dd 83 8f fd 87 64 96 09 8b e1
+        65 f8 fe 43 5d 02 af 1f e0 1f 1f 93 7d 77 77 30
+        19 ee 69 57 40 63 7f 8e c4 c0 92 f7 2a 2f ca d2
+        3a 24 37 18 13 7e 9d fd a3 58 30 56 30 0c 06 03
+        55 1d 13 01 01 ff 04 02 30 00 30 1f 06 03 55 1d
+        23 04 18 30 16 80 14 53 1b 46 32 f2 ba 1b ec 35
+        23 b0 c6 84 e2 bc 7f 11 da a2 2e 30 15 06 03 55
+        1d 20 04 0e 30 0c 30 0a 06 08 2a 82 14 00 44 01
+        14 01 30 0e 06 03 55 1d 0f 01 01 ff 04 04 03 02
+        07 80 30 0a 06 08 2a 86 48 ce 3d 04 03 02 03 47
+        00 30 44 02 20 10 19 82 b1 a5 50 79 61 15 33 b9
+        58 c2 31 2b 42 db b5 17 61 fd e3 d6 f2 b1 54 8f
+        de bc db 4c 68 02 20 6a bd 3e 62 2f 36 65 a8 ae
+        71 ea 31 6c 5c 3f 47 1e d4 93 0b 24 bb 22 26 3c
+        4e 71 f0 d0 41 13 39
+Output to cert.der
+========================================================
+
+# Trust M DER format certificate
+pi@raspberrypi:~/projects/cli-optiga-trust-m-20190527/bin$ ./trustm_data -r 0xe0e0 -o cert.der -p 9
+========================================================
+Device Certificate       [0xE0E0] [Size 0478] :
+        30 82 01 da 30 82 01 81 a0 03 02 01 02 02 02 01
+        02 30 0a 06 08 2a 86 48 ce 3d 04 03 02 30 77 31
+        0b 30 09 06 03 55 04 06 13 02 44 45 31 21 30 1f
+        06 03 55 04 0a 0c 18 49 6e 66 69 6e 65 6f 6e 20
+        54 65 63 68 6e 6f 6c 6f 67 69 65 73 20 41 47 31
+        13 30 11 06 03 55 04 0b 0c 0a 4f 50 54 49 47 41
+        28 54 4d 29 31 30 30 2e 06 03 55 04 03 0c 27 49
+        6e 66 69 6e 65 6f 6e 20 4f 50 54 49 47 41 28 54
+        4d 29 20 54 72 75 73 74 20 4d 20 54 65 73 74 20
+        43 41 20 30 30 30 30 1e 17 0d 31 39 30 33 31 34
+        31 33 32 34 30 38 5a 17 0d 33 39 30 33 31 35 31
+        33 32 34 30 38 5a 30 1c 31 1a 30 18 06 03 55 04
+        03 0c 11 49 6e 66 69 6e 65 6f 6e 20 49 6f 54 20
+        4e 6f 64 65 30 59 30 13 06 07 2a 86 48 ce 3d 02
+        01 06 08 2a 86 48 ce 3d 03 01 07 03 42 00 04 dd
+        eb c6 98 99 f9 26 0f 69 a9 13 ad f0 38 dd 83 8f
+        fd 87 64 96 09 8b e1 65 f8 fe 43 5d 02 af 1f e0
+        1f 1f 93 7d 77 77 30 19 ee 69 57 40 63 7f 8e c4
+        c0 92 f7 2a 2f ca d2 3a 24 37 18 13 7e 9d fd a3
+        58 30 56 30 0c 06 03 55 1d 13 01 01 ff 04 02 30
+        00 30 1f 06 03 55 1d 23 04 18 30 16 80 14 53 1b
+        46 32 f2 ba 1b ec 35 23 b0 c6 84 e2 bc 7f 11 da
+        a2 2e 30 15 06 03 55 1d 20 04 0e 30 0c 30 0a 06
+        08 2a 82 14 00 44 01 14 01 30 0e 06 03 55 1d 0f
+        01 01 ff 04 04 03 02 07 80 30 0a 06 08 2a 86 48
+        ce 3d 04 03 02 03 47 00 30 44 02 20 10 19 82 b1
+        a5 50 79 61 15 33 b9 58 c2 31 2b 42 db b5 17 61
+        fd e3 d6 f2 b1 54 8f de bc db 4c 68 02 20 6a bd
+        3e 62 2f 36 65 a8 ae 71 ea 31 6c 5c 3f 47 1e d4
+        93 0b 24 bb 22 26 3c 4e 71 f0 d0 41 13 39
+Output to cert.der
+========================================================
+
+# Convert DER to PEM 
+openssl x509 -inform der -in cert.der -out device_certificate.pem
+
+# Trust M device certificate
+-----BEGIN CERTIFICATE-----
+MIIB2jCCAYGgAwIBAgICAQIwCgYIKoZIzj0EAwIwdzELMAkGA1UEBhMCREUxITAf
+BgNVBAoMGEluZmluZW9uIFRlY2hub2xvZ2llcyBBRzETMBEGA1UECwwKT1BUSUdB
+KFRNKTEwMC4GA1UEAwwnSW5maW5lb24gT1BUSUdBKFRNKSBUcnVzdCBNIFRlc3Qg
+Q0EgMDAwMB4XDTE5MDMxNDEzMjQwOFoXDTM5MDMxNTEzMjQwOFowHDEaMBgGA1UE
+AwwRSW5maW5lb24gSW9UIE5vZGUwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATd
+68aYmfkmD2mpE63wON2Dj/2HZJYJi+Fl+P5DXQKvH+AfH5N9d3cwGe5pV0Bjf47E
+wJL3Ki/K0jokNxgTfp39o1gwVjAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFFMb
+RjLyuhvsNSOwxoTivH8R2qIuMBUGA1UdIAQOMAwwCgYIKoIUAEQBFAEwDgYDVR0P
+AQH/BAQDAgeAMAoGCCqGSM49BAMCA0cAMEQCIBAZgrGlUHlhFTO5WMIxK0LbtRdh
+/ePW8rFUj96820xoAiBqvT5iLzZlqK5x6jFsXD9HHtSTCyS7IiY8TnHw0EETOQ==
+-----END CERTIFICATE-----
+
+# Trust M 0xE0E0 End device certificate
+openssl x509 -in device_certificate.pem -text -noout
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 258 (0x102)
+    Signature Algorithm: ecdsa-with-SHA256
+        Issuer: C = DE, O = Infineon Technologies AG, OU = OPTIGA(TM), CN = Infineon OPTIGA(TM) Trust M Test CA 000
+        Validity
+            Not Before: Mar 14 13:24:08 2019 GMT
+            Not After : Mar 15 13:24:08 2039 GMT
+        Subject: CN = Infineon IoT Node
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    04:dd:eb:c6:98:99:f9:26:0f:69:a9:13:ad:f0:38:
+                    dd:83:8f:fd:87:64:96:09:8b:e1:65:f8:fe:43:5d:
+                    02:af:1f:e0:1f:1f:93:7d:77:77:30:19:ee:69:57:
+                    40:63:7f:8e:c4:c0:92:f7:2a:2f:ca:d2:3a:24:37:
+                    18:13:7e:9d:fd
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Authority Key Identifier:
+                keyid:53:1B:46:32:F2:BA:1B:EC:35:23:B0:C6:84:E2:BC:7F:11:DA:A2:2E
+
+            X509v3 Certificate Policies:
+                Policy: 1.2.276.0.68.1.20.1
+
+            X509v3 Key Usage: critical
+                Digital Signature
+    Signature Algorithm: ecdsa-with-SHA256
+         30:44:02:20:10:19:82:b1:a5:50:79:61:15:33:b9:58:c2:31:
+         2b:42:db:b5:17:61:fd:e3:d6:f2:b1:54:8f:de:bc:db:4c:68:
+         02:20:6a:bd:3e:62:2f:36:65:a8:ae:71:ea:31:6c:5c:3f:47:
+         1e:d4:93:0b:24:bb:22:26:3c:4e:71:f0:d0:41:13:39
+
+
+PS C:\Users\limtsesi\Desktop\TrustM Certificate> openssl x509 -inform pem -in .\OPTIGA_Trust_M_Infineon_Test_CA.pem
+-----BEGIN CERTIFICATE-----
+MIICXzCCAgWgAwIBAgIJAPvhyhqQ9SBkMAoGCCqGSM49BAMCMHcxCzAJBgNVBAYT
+AkRFMSEwHwYDVQQKDBhJbmZpbmVvbiBUZWNobm9sb2dpZXMgQUcxEzARBgNVBAsM
+Ck9QVElHQShUTSkxMDAuBgNVBAMMJ0luZmluZW9uIE9QVElHQShUTSkgVHJ1c3Qg
+TSBUZXN0IENBIDAwMDAeFw0xODA2MTUxNDI5NTNaFw00MzA2MDkxNDI5NTNaMHcx
+CzAJBgNVBAYTAkRFMSEwHwYDVQQKDBhJbmZpbmVvbiBUZWNobm9sb2dpZXMgQUcx
+EzARBgNVBAsMCk9QVElHQShUTSkxMDAuBgNVBAMMJ0luZmluZW9uIE9QVElHQShU
+TSkgVHJ1c3QgTSBUZXN0IENBIDAwMDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IA
+BBtR/awopb0LOVdBpwBuI2T408QIx1yggF419m6fEB8ljFb2ITPV2UUuX6dwKez5
+mbNKc6WbmKqW+Ao1NwqIjmejejB4MBIGA1UdEwEB/wQIMAYBAf8CAQAwCwYDVR0P
+BAQDAgIEMB0GA1UdDgQWBBRTG0Yy8rob7DUjsMaE4rx/EdqiLjAfBgNVHSMEGDAW
+gBRTG0Yy8rob7DUjsMaE4rx/EdqiLjAVBgNVHSAEDjAMMAoGCCqCFABEARQBMAoG
+CCqGSM49BAMCA0gAMEUCIBuzcqI+NoXPIaPilU9nDERpRXDYqI4vdrBcD18n8uvx
+AiEArfDT4Yvy4l9FmEgMtkMYL6OP4Ipu890q8e98J2pEtg8=
+-----END CERTIFICATE-----
+
+PS C:\Users\limtsesi\Desktop\TrustM Certificate> openssl x509 -in .\OPTIGA_Trust_M_Infineon_Test_CA.pem -text -noout
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            fb:e1:ca:1a:90:f5:20:64
+    Signature Algorithm: ecdsa-with-SHA256
+        Issuer: C = DE, O = Infineon Technologies AG, OU = OPTIGA(TM), CN = Infineon OPTIGA(TM) Trust M Test CA 000
+        Validity
+            Not Before: Jun 15 14:29:53 2018 GMT
+            Not After : Jun  9 14:29:53 2043 GMT
+        Subject: C = DE, O = Infineon Technologies AG, OU = OPTIGA(TM), CN = Infineon OPTIGA(TM) Trust M Test CA 000
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    04:1b:51:fd:ac:28:a5:bd:0b:39:57:41:a7:00:6e:
+                    23:64:f8:d3:c4:08:c7:5c:a0:80:5e:35:f6:6e:9f:
+                    10:1f:25:8c:56:f6:21:33:d5:d9:45:2e:5f:a7:70:
+                    29:ec:f9:99:b3:4a:73:a5:9b:98:aa:96:f8:0a:35:
+                    37:0a:88:8e:67
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        X509v3 extensions:
+            X509v3 Basic Constraints: critical
+                CA:TRUE, pathlen:0
+            X509v3 Key Usage:
+                Certificate Sign
+            X509v3 Subject Key Identifier:
+                53:1B:46:32:F2:BA:1B:EC:35:23:B0:C6:84:E2:BC:7F:11:DA:A2:2E
+            X509v3 Authority Key Identifier:
+                keyid:53:1B:46:32:F2:BA:1B:EC:35:23:B0:C6:84:E2:BC:7F:11:DA:A2:2E
+
+            X509v3 Certificate Policies:
+                Policy: 1.2.276.0.68.1.20.1
+
+    Signature Algorithm: ecdsa-with-SHA256
+         30:45:02:20:1b:b3:72:a2:3e:36:85:cf:21:a3:e2:95:4f:67:
+         0c:44:69:45:70:d8:a8:8e:2f:76:b0:5c:0f:5f:27:f2:eb:f1:
+         02:21:00:ad:f0:d3:e1:8b:f2:e2:5f:45:98:48:0c:b6:43:18:
+         2f:a3:8f:e0:8a:6e:f3:dd:2a:f1:ef:7c:27:6a:44:b6:0f
+
+# Verify End device certificate 
+openssl verify -CAfile OPTIGA_Trust_M_Infineon_Test_CA.pem device_certificate.pem
+
+
+Example Productive Engineering Sample Certificate
+Note: Every part has a different certificate
+PS C:\XMC4800_FreeRTOS\amazon-freertos-optiga-trust-m\extra\TrustM Certificates> openssl x509 -in .\TrustM_Productive_ce
+rtificate.pem -text -noout
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number: 1605560556 (0x5fb2e8ec)
+    Signature Algorithm: ecdsa-with-SHA256
+        Issuer: C = DE, O = Infineon Technologies AG, OU = OPTIGA(TM), CN = Infineon OPTIGA(TM) Trust M CA 101
+        Validity
+            Not Before: Jun 18 06:28:23 2019 GMT
+            Not After : Jun 18 06:28:23 2039 GMT
+        Subject: CN = Infineon IoT Node
+        Subject Public Key Info:
+            Public Key Algorithm: id-ecPublicKey
+                Public-Key: (256 bit)
+                pub:
+                    04:46:3e:37:92:cf:c2:a0:26:81:24:a2:37:27:47:
+                    d1:17:4f:f9:7b:e5:34:cd:2f:7d:5f:3c:2d:67:16:
+                    5d:fc:af:55:61:37:d7:73:f4:6f:f7:7c:77:43:90:
+                    4e:38:7e:3b:dc:c8:9b:92:46:46:28:e3:c5:7c:72:
+                    8f:44:7a:3e:89
+                ASN1 OID: prime256v1
+                NIST CURVE: P-256
+        X509v3 extensions:
+            X509v3 Key Usage: critical
+                Digital Signature
+            X509v3 Basic Constraints: critical
+                CA:FALSE
+            X509v3 Certificate Policies:
+                Policy: 1.2.276.0.68.1.20.1
+
+            X509v3 Authority Key Identifier:
+                keyid:3C:30:8C:5C:D5:8A:E8:A3:5D:32:80:E4:54:83:B2:FF:CD:86:4D:23
+
+    Signature Algorithm: ecdsa-with-SHA256
+         30:45:02:20:6c:97:ed:af:6c:92:3a:88:1a:25:48:6f:c7:43:
+         2a:6a:97:44:d1:bd:db:24:af:d9:33:f4:42:7c:fb:63:dc:b9:
+         02:21:00:fa:85:25:b0:97:08:82:4f:0d:d2:5c:a8:10:67:d7:
+         74:f6:91:cd:65:89:da:12:3e:17:49:0e:e6:8e:b6:1b:b6
+
+

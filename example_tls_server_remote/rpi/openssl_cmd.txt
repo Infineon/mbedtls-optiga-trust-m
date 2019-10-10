@@ -1,0 +1,2 @@
+
+openssl s_server -accept 9000 -key credential/server.secretkey.pem -cert credential/server.cert.pem -CAfile credential/OPTIGA_Trust_M_Infineon_Test_CA.pem -Verify 1
