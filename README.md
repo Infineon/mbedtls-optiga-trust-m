@@ -16,7 +16,7 @@ This repository contains one of the Application Notes for OPTIGA<sup>TM</sup> Tr
 * [Testing the TLS connection](#Testing-the-TLS-connection)
 
 * **Appendix A:** [Memory usage of Software mbedTLS vs Hardware supported mbedTLS ](#Appendix-A-Memory-usage-of-Software-mbedTLS-vs-Hardware-supported-mbedTLS)
-* **Appendix B:** [TLS Server and Client Certificate Provisioning](#TLS-Server-and-Client-Certificate-Provisioning)
+* **Appendix B:** [TLS Server and Client Certificate Provisioning](#Appendix-B-TLS-Server-and-Client-Certificate-Provisioning)
 * **Appendix C:** [Functional Testing](#Appendix-C-Functional-Testing)
   - [Read UID Test](#Read-UID-Test)
   - [One way Authentication Test](#One-way-Authentication-Test)
