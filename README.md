@@ -43,7 +43,13 @@ In order to compile and run the TLS client, DAVE IDE is required. Download from 
 Development IDE:
     * IDE: [DAVE](https://infineoncommunity.com/dave-download_ID645)
 
-Once, DAVE IDE has been downloaded and installed, the TLS client can be downloaded or clone using from this repository.
+Once, DAVE IDE has been downloaded and installed, the TLS client can be downloaded from a [release](https://github.com/Infineon/mbedtls-optiga-trust-m/releases) or cloned from this repository.
+
+__Note: Please keep in mind there is submodule included, you need to clone with the `--recurse-submodules` option; i.e.:__
+
+```c
+$ git clone --recurse-submodules  https://github.com/Infineon/mbedtls-optiga-trust-m.git
+```
 
 Import the DAVE project from the following path <amazon-freertos-optiga-trust-m>\example_tls_client_xmc\infineon\xmc4800_iotkit_trustm\dave4\
 
@@ -490,12 +496,7 @@ Configure the **FreeRTOSConfig.h** for the server connectivity. The server must 
 
 Refer the key generation in **make_ecc_cert.sh** script.
 
-### Secret key stored in Trust M Provisioning
-
-Infineon generates the first manufacturer key pair in 0xE0E0 and 0xE0F0 in the Infineon factory. This key pair can also be used for mutual authentication during the TLS handshaking.
-
-
-## Appendix Generate Server and Client Certificate
+## How to Generate Server and Client Certificates
 A set of Server Private and Public Key is created. The Server Public Key is signed using the Server Private key and generated as a Certificate. This can be created using the **make_ecc_cert.sh** script. The script also helps to generate client private key and certificate stored in flash. On the client side, a set of Client Private and Public Key is created. The Client Public Key is signed using the Client Private key and generated as a Certificate. The Server Certificate is served as a Server CA certificate and placed in the Client (XMC4800 IoT kit). The Client Certificate is served as a Client CA certificate and placed in TLS server.
 
 As the CA Certificate (essentially a Public Key) is the same key pair of the private key, verification will certain pass if done correctly.
@@ -564,6 +565,10 @@ Note: Using the script below generates certificate valid for 30 days only.
 
 
 For more information on Amazon FreeRTOS, refer to the [Getting Started section of Amazon FreeRTOS webpage](https://aws.amazon.com/freertos).
+
+### Secret key stored in Trust M Provisioning
+
+Infineon generates the first manufacturer key pair in 0xE0E0 and 0xE0F0 in the Infineon factory. This key pair can also be used for mutual authentication during the TLS handshaking.
 
 ## Testing the TLS connection
 The s_server command can be used to implement a generic SSL/TLS server that listens for connections on a given port using SSL/TLS. It can be used for TLS client testing.
