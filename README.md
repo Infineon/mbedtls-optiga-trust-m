@@ -2,6 +2,12 @@
 
 This repository contains one of the Application Notes for OPTIGA<sup>TM</sup> Trust M security chip, showing how to perform TLS handshake with mutual authentication with an echo TLS server. The TLS client is implemented using XMC4800 running FreeRTOS version 10.2 (adopted from AWS FreeRTOS) with mbed TLS. Several server options are also provided with this application note as reference.
 
+__Note: Please keep in mind there is submodule included, you need to clone with the `--recurse-submodules` option; i.e.:__
+
+```c
+$ git clone --recurse-submodules  https://github.com/Infineon/mbedtls-optiga-trust-m.git
+```
+
 # Table of Contents
 * [Quickstart](#Quickstart)
 * [Getting Started](#Getting-Started)
