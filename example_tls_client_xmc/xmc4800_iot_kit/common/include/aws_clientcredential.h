@@ -33,7 +33,7 @@
 #include "aws_clientcredential_keys.h"
 
 //External wifi connectivity to the internet other wise it will connect to local wifi AP
-#define EXTERNAL_WIFI    1
+#define EXTERNAL_WIFI    0
 /*
  * Wi-Fi network to join.
  */
@@ -46,7 +46,7 @@
  */
 #if (EXTERNAL_WIFI==0)
 #define clientcredentialWIFI_SSID       "raspi-webgui"
-#define clientcredentialWIFI_PASSWORD   "password123"
+#define clientcredentialWIFI_PASSWORD   "ChangeMe"
 //#define clientcredentialWIFI_PASSWORD   "ChangeMe" //Default raspberry pi webgui software password
 #endif
 
