@@ -88,8 +88,8 @@ const uint32_t clientcredentialCLIENT_PRIVATE_KEY_LENGTH = sizeof( clientcredent
 #define provisioningROOT_CERTIFICATE_TEMPLATE_COUNT    3
 
 #define SHOW_PROVISION_PATH       0
-
-uint8_t TrustM_device_cert [512];
+///size of end entity certificate of OPTIGA™ Trust M
+uint8_t TrustM_device_cert [920];
 size_t TrustM_Cert_Len = 0;
 /*-----------------------------------------------------------*/
 
@@ -455,7 +455,7 @@ void vDevModeKeyProvisioning( void )
 #if (SHOW_PROVISION_PATH == 1)
     configPRINTF( ( ">vDevModeKeyProvisioning()\r\n" ) );
 #endif
-    xParams.ulClientPrivateKeyType = CKK_EC;
+    xParams.ulClientPrivateKeyType = CKK_RSA;
     xParams.pcClientPrivateKey = ( uint8_t * ) clientcredentialCLIENT_PRIVATE_KEY_PEM;
     xParams.ulClientPrivateKeyLength = clientcredentialCLIENT_PRIVATE_KEY_LENGTH;
     xParams.pcClientCertificate = ( uint8_t * ) clientcredentialCLIENT_CERTIFICATE_PEM;
