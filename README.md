@@ -99,15 +99,12 @@ Configure the **aws_clientcredential.h** for the Wifi SSID and password. The Wif
 /*
  * Wi-Fi network to join.
  */
-#define clientcredentialWIFI_SSID       "Apple7"
-//#define clientcredentialWIFI_SSID       "AndroidMobileAP"
-//#define clientcredentialWIFI_SSID       "raspi-webgui"
+#define clientcredentialWIFI_SSID       "MY_SSID"
 
 /*
  * Password needed to join Wi-Fi network.
  */
-#define clientcredentialWIFI_PASSWORD   "password123"
-//#define clientcredentialWIFI_PASSWORD   "ChangeMe"
+#define clientcredentialWIFI_PASSWORD   "MY_PASSWORD"
 ```
 ## TLS Client IP address configurations
 
