@@ -218,7 +218,7 @@ extern void vLoggingPrint( const char * pcMessage );
  * http://www.freertos.org/FreeRTOS-Plus/FreeRTOS_Plus_TCP/TCP_Echo_Clients.html,
  * http://www.freertos.org/FreeRTOS-Plus/FreeRTOS_Plus_TCP/UDP_Echo_Clients.html. */
 
-#define REMOTE_TLS_SERVER    0
+#define REMOTE_TLS_SERVER    1
 
 #if (REMOTE_TLS_SERVER == 1)
 //EC2 Instance IP address

@@ -49,7 +49,7 @@ extern void vStartTCPEchoClientTasks_SingleTasks( void );
 
 /* Logging Task Defines. */
 #define mainLOGGING_MESSAGE_QUEUE_LENGTH    ( 15 )
-#define mainLOGGING_TASK_STACK_SIZE         ( configMINIMAL_STACK_SIZE * 4 )
+#define mainLOGGING_TASK_STACK_SIZE         ( configMINIMAL_STACK_SIZE * 8 )
 
 /* The task delay for allowing the lower priority logging task to print out Wi-Fi 
  * failure status before blocking indefinitely. */
@@ -72,6 +72,7 @@ void vApplicationDaemonTaskStartupHook( void );
  * @brief Connects to Wi-Fi.
  */
 static void prvWifiConnect( void );
+
 /**
  * @brief Initializes the board.
  */

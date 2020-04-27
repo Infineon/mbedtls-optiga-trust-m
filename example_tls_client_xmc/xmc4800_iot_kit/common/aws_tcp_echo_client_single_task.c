@@ -55,7 +55,6 @@
 
 #include "optiga/optiga_util.h"
 #include "optiga/pal/pal_os_event.h"
-#include "optiga/pal/pal_logger.h"
 #include "optiga/ifx_i2c/ifx_i2c_config.h"
 #include "mbedtls/base64.h"
 #include "trustm_chipinfo.h"
@@ -83,15 +82,6 @@ extern void example_optiga_util_protected_update(void);
 extern void example_optiga_util_read_data(void);
 extern void example_optiga_util_update_count(void);
 extern void example_optiga_util_write_data(void);
-
-extern pal_status_t pal_os_event_init(void);
-
-extern void example_mbedtls_optiga_crypt_rsa_sign(void);
-extern void example_mbedtls_optiga_crypt_rsa_verify(void);
-extern void example_mbedtls_optiga_crypt_rsa_encrypt(void);
-extern void example_mbedtls_optiga_crypt_rsa_decrypt(void);
-
-extern void example_pair_host_and_optiga_using_pre_shared_secret(void);
 
 extern void vStartTCPEchoClientTasks_SingleTasks( void );
 
@@ -170,20 +160,17 @@ extern void vStartTCPEchoClientTasks_SingleTasks( void );
 
 static const char cTlsECHO_SERVER_CERTIFICATE_PEM[] =
 "-----BEGIN CERTIFICATE-----\n"
-"MIICbzCCAdgCEQCIiIiIiIiIiIiIiIiIiIiIMA0GCSqGSIb3DQEBCwUAMHgxCzAJ\n"
-"BgNVBAYTAlNHMRIwEAYDVQQIDAlCYW5nYWxvcmUxEjAQBgNVBAcMCUJhbmdhbG9y\n"
-"ZTEeMBwGA1UECgwVSW5maW5lb24gVGVjaG5vbG9naWVzMQwwCgYDVQQLDANEU1Mx\n"
-"EzARBgNVBAMMClRMU19TZXJ2ZXIwHhcNMTkwOTMwMTA1NjE3WhcNMjkwOTI3MTA1\n"
-"NjE3WjB4MQswCQYDVQQGEwJTRzESMBAGA1UECAwJQmFuZ2Fsb3JlMRIwEAYDVQQH\n"
-"DAlCYW5nYWxvcmUxHjAcBgNVBAoMFUluZmluZW9uIFRlY2hub2xvZ2llczEMMAoG\n"
-"A1UECwwDRFNTMRMwEQYDVQQDDApUTFNfU2VydmVyMIGfMA0GCSqGSIb3DQEBAQUA\n"
-"A4GNADCBiQKBgQChaEfsQ6u0K9H3VIK1VexdB6nfhDCGRh0QaUnmSTFtJtk+05PT\n"
-"8UZ3iHQwqCxAM7HpfFrct1EUlhQEgmzFif6iptjru2GO6fWlfQl/L33xiKgYBpCT\n"
-"2v2r7ZEKnz20AnbUE4FjseHiIr9kZ05UiWkYc0te2dc7uKiA2ICqL8ipWwIDAQAB\n"
-"MA0GCSqGSIb3DQEBCwUAA4GBACIFn5zFtCR9LUMo/smIbNSDrOV4zUzMpp1p3xFu\n"
-"Nkjq8WpJKJDVoIWRVU/J1Ll9dubc4+LB2EtETx+ibBXHdnRPGJqzGWkyFQ9RBOSO\n"
-"YV/juDh5qbIdkrInxYv9JZFULryHvOz9DcxB+AuLHVzUhikK2Kfr93SawEs++HdU\n"
-"6Xr/\n"
+"MIIB6TCCAY4CEQCIiIiIiIiIiIiIiIiIiIiIMAoGCCqGSM49BAMCMHgxCzAJBgNV\n"
+"BAYTAlNHMRIwEAYDVQQIDAlTaW5nYXBvcmUxEjAQBgNVBAcMCVNpbmdhcG9yZTEe\n"
+"MBwGA1UECgwVSW5maW5lb24gVGVjaG5vbG9naWVzMQwwCgYDVQQLDANEU1MxEzAR\n"
+"BgNVBAMMClRMU19TZXJ2ZXIwHhcNMTkwNzE1MDIzNTI0WhcNMjkwNzEyMDIzNTI0\n"
+"WjB4MQswCQYDVQQGEwJTRzESMBAGA1UECAwJU2luZ2Fwb3JlMRIwEAYDVQQHDAlT\n"
+"aW5nYXBvcmUxHjAcBgNVBAoMFUluZmluZW9uIFRlY2hub2xvZ2llczEMMAoGA1UE\n"
+"CwwDRFNTMRMwEQYDVQQDDApUTFNfU2VydmVyMFkwEwYHKoZIzj0CAQYIKoZIzj0D\n"
+"AQcDQgAE0jLl4KdE8eJGdV9RzI9+kzkUIt5dZq8JyOLhzxyOCMLo0GZ6zDs8nkno\n"
+"Gmt1RX7aj7nqp0/rfODnFdZQVPEwnTAKBggqhkjOPQQDAgNJADBGAiEAucb4OgdZ\n"
+"ubMiQwCiKkOTJKxir4ZUoRbP/Bb40YQ13FYCIQCx/Y5VPNyeL+P+IcQH+g2Dkc5p\n"
+"30ByOlKA2QXAfzUYoA==\n"
 "-----END CERTIFICATE-----\n";
 
     static const uint32_t ulTlsECHO_SERVER_CERTIFICATE_LENGTH = sizeof( cTlsECHO_SERVER_CERTIFICATE_PEM );
@@ -253,8 +240,6 @@ int TRUSTM_AUTH_LOOP_COUNT=1;
 #define EXAMPLE_UNIT_TESTS      0
 int TRUSTM_UNIT_TEST_LOOP_COUNT=1;
 
-#define TRUSTM_RSA_TEST         0
-
 static void prvEchoClientTask( void * pvParameters )
 {
     Socket_t xSocket;
@@ -305,8 +290,6 @@ static void prvEchoClientTask( void * pvParameters )
 	{
 		configPRINTF( ( "TCPCLient(): Open TrustM App Ok\r\n") );
 	}
-	configPRINTF( ( "TCPCLient(): Pairing of host and OPTIGA \r\n") );
-	//example_pair_host_and_optiga_using_pre_shared_secret();
 
 #if ( READ_UID_TEST == 1 )
 	do{
@@ -353,31 +336,6 @@ static void prvEchoClientTask( void * pvParameters )
 			configPRINTF( ( "Example unit tests loop count=%d\r\n",TRUSTM_UNIT_TEST_LOOP_COUNT--) );
 	    }while(TRUSTM_UNIT_TEST_LOOP_COUNT);
 	    configPRINTF( ( "+++++Unit Tests Completed+++++\r\n") );
-#endif
-
-#if (TRUSTM_RSA_TEST == 1)
-	do{
-		configPRINTF( ( "+++++TrustM pre shared secret Test+++++\r\n") );
-	    example_pair_host_and_optiga_using_pre_shared_secret();
-		configPRINTF( ( "+++++TrustM pre shared secret Test Completed+++++\r\n") );
-
-		configPRINTF( ( "+++++TrustM RSA Verify Test+++++\r\n") );
-		example_mbedtls_optiga_crypt_rsa_verify();
-		configPRINTF( ( "+++++TrustM RSA Verify Test Completed+++++\r\n") );
-
-		configPRINTF( ( "+++++TrustM RSA Sign Test+++++\r\n") );
-		example_mbedtls_optiga_crypt_rsa_sign();
-		configPRINTF( ( "+++++TrustM RSA Sign Test Completed+++++\r\n") );
-
-		configPRINTF( ( "+++++TrustM RSA Encrypt Test+++++\r\n") );
-		example_mbedtls_optiga_crypt_rsa_encrypt();
-		configPRINTF( ( "+++++TrustM RSA Encrypt Test Completed+++++\r\n") );
-
-		configPRINTF( ( "+++++TrustM RSA Decrypt Test+++++\r\n") );
-		example_mbedtls_optiga_crypt_rsa_decrypt();
-		configPRINTF( ( "+++++TrustM RSA Decrypt Test Completed+++++\r\n") );
-	} while(FALSE);
-
 #endif
 #endif
 #endif

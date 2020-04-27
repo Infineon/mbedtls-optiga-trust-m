@@ -227,10 +227,14 @@
 								</option>
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def.1645145337" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="XMC4800_F100x2048"/>
-									<listOptionValue builtIn="false" value="MBEDTLS_RSA_ALT"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDH_GEN_PUBLIC_ALT"/>
 									<listOptionValue builtIn="false" value="TLS_SECRET_IN_TRUSTM"/>
 									<listOptionValue builtIn="false" value="USE_CMDLIB_WITH_RTOS"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDSA_SIGN_ALT"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDSA_VERIFY_ALT"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDH_COMPUTE_SHARED_ALT"/>
 									<listOptionValue builtIn="false" value="PAL_OS_HAS_EVENT_INIT"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDSA_GENKEY_ALT"/>
 								</option>
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.other.verbose.509061093" name="Verbose (-v)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.other.verbose" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.warnings.pedantic.423702694" name="Pedantic (-pedantic)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.warnings.pedantic" useByScannerDiscovery="false" value="false" valueType="boolean"/>
@@ -272,6 +276,7 @@
 								</option>
 								<option id="org.eclipse.cdt.cross.arm.gnu.assembler.option.preprocessor.def.2141296672" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arm.gnu.assembler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="XMC4800_F100x2048"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDSA_GENKEY_ALT_DISABLE"/>
 								</option>
 								<option id="org.eclipse.cdt.cross.arm.gnu.assembler.option.other.verbose.1901356027" name="Verbose (-v)" superClass="org.eclipse.cdt.cross.arm.gnu.assembler.option.other.verbose" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 								<inputType id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.434431030" superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input"/>
@@ -331,7 +336,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="lib/optiga-trust-m/pal/xmc4800/pal_logger.c|common/entropy_hardware.c|common/entropy_hardware_alt.c|lib/optiga-trust-m/examples/optiga/usecases/example_optiga_hibernate_restore.c|lib/optiga-trust-m/examples/optiga/example_optiga_util_read_uid.c|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/IAR|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/ARM|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4700_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4500_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4100_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1100_series|lib/optiga-trust-m/utilities/cmd_process|lib/optiga-trust-m/examples/tools|lib/optiga-trust-m/examples/utilities/cmd_process|lib/trustm/externals|lib/trustm/pal/xmc4800_freertos/global_ccu4|lib/trustm/pal/xmc4800_freertos/interrupt|lib/trustm/pal/xmc4800_freertos/timer" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="common/entropy_hardware.c|common/entropy_hardware_alt.c|lib/optiga-trust-m/pal/xmc4800/pal_logger.c|lib/optiga-trust-m/examples/optiga/usecases/example_optiga_hibernate_restore.c|lib/optiga-trust-m/examples/optiga/example_optiga_util_read_uid.c|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/IAR|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/ARM|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4700_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4500_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4100_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1100_series|lib/optiga-trust-m/utilities/cmd_process|lib/optiga-trust-m/examples/tools|lib/optiga-trust-m/examples/utilities/cmd_process|lib/trustm/externals|lib/trustm/pal/xmc4800_freertos/global_ccu4|lib/trustm/pal/xmc4800_freertos/interrupt|lib/trustm/pal/xmc4800_freertos/timer" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -362,34 +367,34 @@
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appRelease.1738416162;com.ifx.xmc4000.appRelease.1738416162.;com.ifx.xmc4000.appRelease.compiler.1324402056;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.362909726">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616.1937159932;com.ifx.xmc4000.appDebug.1480183648.2101387616.1937159932.;com.ifx.xmc4000.appDebug.assembler.1504065259;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.164768380">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616.34622844;com.ifx.xmc4000.appDebug.1480183648.2101387616.34622844.;com.ifx.xmc4000.appDebug.compiler.179363416;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.516543563">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616;com.ifx.xmc4000.appDebug.1480183648.2101387616.;com.ifx.xmc4000.appDebug.assembler.34626452;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.1347453619">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616.34622844;com.ifx.xmc4000.appDebug.1480183648.2101387616.34622844.;com.ifx.xmc4000.appDebug.assembler.1216134508;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.434431030">
+		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appRelease.1738416162;com.ifx.xmc4000.appRelease.1738416162.;com.ifx.xmc4000.appRelease.assembler.147159450;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.836428573">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648;com.ifx.xmc4000.appDebug.1480183648.;com.ifx.xmc4000.appDebug.compiler.268429070;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.62519071">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648;com.ifx.xmc4000.appDebug.1480183648.;com.ifx.xmc4000.appDebug.assembler.909660102;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.564656445">
+		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616.1937159932;com.ifx.xmc4000.appDebug.1480183648.2101387616.1937159932.;com.ifx.xmc4000.appDebug.assembler.1504065259;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.164768380">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appRelease.1738416162;com.ifx.xmc4000.appRelease.1738416162.;com.ifx.xmc4000.appRelease.assembler.147159450;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.836428573">
+		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appRelease.1738416162;com.ifx.xmc4000.appRelease.1738416162.;com.ifx.xmc4000.appRelease.compiler.1324402056;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.362909726">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616.1937159932;com.ifx.xmc4000.appDebug.1480183648.2101387616.1937159932.;com.ifx.xmc4000.appDebug.compiler.804399134;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.2140091606">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616;com.ifx.xmc4000.appDebug.1480183648.2101387616.;com.ifx.xmc4000.appDebug.compiler.1526907448;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.131400891">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648;com.ifx.xmc4000.appDebug.1480183648.;com.ifx.xmc4000.appDebug.assembler.909660102;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.564656445">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616.34622844;com.ifx.xmc4000.appDebug.1480183648.2101387616.34622844.;com.ifx.xmc4000.appDebug.assembler.1216134508;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.434431030">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616.34622844;com.ifx.xmc4000.appDebug.1480183648.2101387616.34622844.;com.ifx.xmc4000.appDebug.compiler.179363416;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.516543563">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo instanceId="com.ifx.xmc4000.appDebug.1480183648.2101387616;com.ifx.xmc4000.appDebug.1480183648.2101387616.;com.ifx.xmc4000.appDebug.assembler.34626452;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.1347453619">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC"/>
 		</scannerConfigBuildInfo>
 	</storageModule>

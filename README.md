@@ -27,11 +27,11 @@ $ git clone --recurse-submodules  https://github.com/Infineon/mbedtls-optiga-tru
   - [Read UID Test](#Read-UID-Test)
   - [One way Authentication Test](#One-way-Authentication-Test)
   - [Example Unit Test Cases](#Example-Unit-Test-Cases)
-* **Appendix D:** [TLS handshake and record exchange using RSA and ECC algorithm](#Appendix-D-TLS-handshake-and-record-exchange-using-RSA-and-ECC-algorithm)
-* **Appendix E:** [Shielded connection configuration](#Appendix-E-Shielded-connection-configuration)
 
 ## Quickstart
-This section shows how to setup TLS client connecting to TLS server hosted on AWS EC2 Windows server. One of the easiest remote configuration is AWS EC2 Windows instance. EC2 server setup instruction can be found here: [Remote server setup using EC2 Windows](#Remote-server-setup-using-EC2-Windows) In this setup, XMC4800 is programmed as a TLS client which runs on FreeRTOS with MBedTLS. OPTIGA<sup>TM</sup> Trust M stores the secret key used to establish the secure communication.
+This section shows how to setup TLS client connecting to TLS server hosted on AWS EC2 Windows server. One of the easiest remote configuration is AWS EC2 Windows instance. EC2 server setup instruction can be found here: [Remote server setup using EC2 Windows](#Remote-server-setup-using-EC2-Windows) In this setup, XMC4800 is programmed as a TLS client which runs on FreeRTOS with MBedTLS. OPTIGA<sup>TM</sup> Trust M stores the secret key used to establish the secure communication. The figure below illustrates the MbedTLS API used by Trust M.
+
+![Trust M API](extra/pictures/API.png)
 
 
 The TLS client needs to be connected to the network which is accessible to the server. Upon successful TLS handshake, the TLS client will send some data to the TLS server and the echo server shall return the data to the client. On XMC4800, the output can be monitor using serial monitor using the FTDI serial cable connecting to RX and TX of XMC4800 board.
@@ -79,16 +79,13 @@ Click on the execute debug button and the project will be launched and a breakpo
 ![Debug 6](extra/pictures/debug6.png)
 
 A serial terminal with the following settings can be launched to monitor the output.
-Baud:9600
+Baud:115200
 Data: 8-bit
 Parity: none
 Stop bits: 1-bit
 Flow control: none
-Note: The serial terminal(micro USB X100)must be connected on Client side.
 
 ![Terminal](extra/pictures/terminal.png)
-
-Modify the TLS client source code to copy the server certificate in DAVE project in aws-tcp-echo_client_single_task.c. 
 
 Modify the TLS client source code to connect to a hotspot and TLS echo server.
 
@@ -99,12 +96,15 @@ Configure the **aws_clientcredential.h** for the Wifi SSID and password. The Wif
 /*
  * Wi-Fi network to join.
  */
-#define clientcredentialWIFI_SSID       "MY_SSID"
+#define clientcredentialWIFI_SSID       "Apple7"
+//#define clientcredentialWIFI_SSID       "AndroidMobileAP"
+//#define clientcredentialWIFI_SSID       "raspi-webgui"
 
 /*
  * Password needed to join Wi-Fi network.
  */
-#define clientcredentialWIFI_PASSWORD   "MY_PASSWORD"
+#define clientcredentialWIFI_PASSWORD   "password123"
+//#define clientcredentialWIFI_PASSWORD   "ChangeMe"
 ```
 ## TLS Client IP address configurations
 
@@ -178,12 +178,6 @@ $sudo apt-get update
 4. Optional Install Wireshark
 ```console
 $sudo apt-get install wireshark
-```
-Allow non-supervisory user to access wireshark logs by clicking 'Yes', when prompted by installer.
-After installation, run below commands:
-```console
-$sudo dpkg-reconfigure wireshark-common
-$sudo gpasswd -a $USER wireshark
 ```
 
 5. Install Go Programming
@@ -266,7 +260,7 @@ pi@raspberrypi:~/projects/tls3 $ go run tls_server.go ifx
 When the TLS echo server is successfully launched, it will look as follows:
 ```console
 pi@raspberrypi:~/projects/tls_server_client $ go run tls_echo_server.go ifx
-2019/06/16 00:15:08 Root CA: credential/OPTIGA_Trust_M_Infineon_Test_CA.pem
+2019/06/16 00:15:08 Root CA: credential/Infineon_OPTIGA_TrustM_CA_101.pem
 2019/06/16 00:15:08 Listening to port 9000
 ```
 
@@ -280,7 +274,7 @@ When the TLS client is running, this is the expected output from the server.
 ```console
 pi@raspberrypi:~/projects/tls_server_client $ go run tls_echo_server.go ifx
 2
-2019/06/20 23:40:34 Root CA: credential/OPTIGA_Trust_M_Infineon_Test_CA.pem
+2019/06/20 23:40:34 Root CA: credential/Infineon_OPTIGA_TrustM_CA_101.pem
 2019/06/20 23:40:34 Listening to port 9000
 2019/06/20 23:41:02 1: 10.3.141.1:9000 <-> 10.3.141.202:1531
 2019/06/20 23:41:03 Echo Out: T
@@ -344,10 +338,10 @@ export PATH=$PATH:$GOROOT/bin
 ```
 12. Check that Go is operating by using the following commands.
 ```console
-$go --version
+$go version
 ```
 
-13. FTP the TLS echo server files into the EC2 instance.
+13. FTP the TLS echo [server files](https://github.com/ayushev/mbedtls-optiga-trust-m/tree/master/example_tls_server_remote) into the EC2 instance. You can do this either by means of FTP or install git on you instance and clone this repository.
 14. Launch the TLS server.
 ```console
 $go run tls_echo_server.go ifx
@@ -364,7 +358,7 @@ When the TLS client is running, this is the expected output from the server.
 ```console
 [ec2-user@ip-172-31-26-254 tls_server_client]$ go run tls_echo_server.go ifx
 2
-2019/06/21 01:44:32 Root CA: credential/OPTIGA_Trust_M_Infineon_Test_CA.pem
+2019/06/21 01:44:32 Root CA: credential/Infineon_OPTIGA_TrustM_CA_101.pem
 2019/06/21 01:44:32 Listening to port 9000
 2019/06/21 01:46:44 1: 172.31.26.254:9000 <-> 122.11.221.246:24852
 2019/06/21 01:46:46 Echo Out: T
@@ -586,7 +580,7 @@ Infineon generates the first manufacturer key pair in 0xE0E0 and 0xE0F0 in the I
 The s_server command can be used to implement a generic SSL/TLS server that listens for connections on a given port using SSL/TLS. It can be used for TLS client testing.
 
 ```console
-openssl s_server -accept 9000 -key credential/server.secretkey.pem -cert credential/server.cert.pem -CAfile credential/OPTIGA_Trust_M_Infineon_Test_CA.pem -Verify 1
+openssl s_server -accept 9000 -key credential/server.secretkey.pem -cert credential/server.cert.pem -CAfile credential/Infineon_OPTIGA_TrustM_CA_101.pem -Verify 1
 ```
 
 ## Appendix A Memory usage of Software mbedTLS vs Hardware supported mbedTLS
@@ -705,54 +699,3 @@ example_optiga_crypt_tls_prf_sha256();<br>
 example_optiga_crypt_ecdh();<br>
 example_optiga_crypt_rsa_encrypt_session();<br>
 example_optiga_crypt_rsa_decrypt_and_export();<br>
-
-Set the macro **TRUSTM_RSA_TEST** to "1" to turn on unit test cases for mbedTLS RSA APIs that are implemented using OPTIGA™ Trust M.
-example_mbedtls_optiga_crypt_rsa_sign();<br>
-example_mbedtls_optiga_crypt_rsa_verify();<br>
-example_mbedtls_optiga_crypt_rsa_encrypt();<br>
-example_mbedtls_optiga_crypt_rsa_decrypt();<br>
-
-## Appendix D: TLS handshake and record exchange using RSA and ECC algorithm
-<details>
-<summary><font size="+1">Expand Image for RSA</font></summary>
-<br>
-<img src="extra/pictures/TLS_RSA_with_TLS_ECDHE_RSA_WITH_AES_128.jpg" height="" width="">
-<summary>TLS handhake using cipher as MBEDTLS_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 with OPTIGA TrustM V1</summary>
-<img src="extra/pictures/TLS_RSA_with_TLS_RSA_WITH_AES_128.jpg" height="" width="">
-<summary>TLS handhake using cipher as MBEDTLS_TLS_RSA_WITH_AES_128_GCM_SHA256 with OPTIGA TrustM V1</summary>
-</details>					 
-<details>
-<summary><font size="+1">Expand Image for ECC</font></summary>
-<br>
-<img src="extra/pictures/API.png" height="" width="">
-<summary>TLS handhake using cipher as MBEDTLS_TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 with OPTIGA™ Trust M V1</summary>
-</details>					 
-In order to use RSA algorithm instead of default ECC algorithm, following changes are to be done:
-
-1. Set the ciphersuite to use RSA algorithm for TLS connection by defining macro MBEDTLS_SSL_CIPHERSUITES as MBEDTLS_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 or MBEDTLS_TLS_RSA_WITH_AES_128_GCM_SHA256. MBEDTLS_SSL_CIPHERSUITES is defined in ../lib/mbedtls/include/mbedtls/config.h.
-2. Set the preset ciphersuite for RSA as MBEDTLS_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 and MBEDTLS_TLS_RSA_WITH_AES_128_GCM_SHA256. This has to be updated in ssl_preset_suiteb_ciphersuites variable in ../lib/mbedtls/library/ssl_tls.c
-3. If the server CA cerficate is modified, it must be copied in constant cTlsECHO_SERVER_CERTIFICATE_PEM defined in source file ../common/aws_tcp_echo_client_single_task.c
-4. If the client keypair is modified, it must be copied in macro keyCLIENT_PRIVATE_KEY_PEM defined in header file ../common/include/aws_clientcredential.h
-5. The below configurations must be updated in vDevModeKeyProvisioning API defined in source file ../common/aws_dev_mode_key_provisioning.c :
-```console
-xParams.ulClientPrivateKeyType = CKK_RSA;
-xParams.pcClientCertificate = NULL;
-xParams.ulClientCertificateLength = 0;
-```	
-6. The below RSA server certificate and keys must be kept at the server:
-The following steps show how to update the server for RSA 1024 key
- ```console
-CA_RSA_1024.pem
-SERVER.RSA_1024_CERT.pem
-SERVER_1024_KEY_PAIR.pem 
-```
-7. For RSA sign and decryption, the private key must be stored in OID 0xE0FC.
-8. The Client Trust Anchor must be stored in OID 0xE0E0.
-9. The RSA algorithm server, client keypair and trust anchors are stored in location ../extra/TrustM Certificates/RSA_certificate_and_key
-
-## Appendix E: Shielded connection configuration
-
-In order to run TLS handshake and record exchange with shielded connection enabled, following changes are to be done:
-1. OPTIGA_COMMS_SHIELDED_CONNECTION macro should be defined in header file ../lib/optiga-trust-m/optiga/include/optiga/optiga_lib_config.h
-2. example_pair_host_and_optiga_using_pre_shared_secret API must be invoked after completion of trustm_OpenApp API inorder to pair the Host and OPTIGA using Pre-Shared secret.
-
