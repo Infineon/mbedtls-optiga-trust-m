@@ -172,7 +172,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="lib/mbedtls_port/trustm_ecdsa.c|lib/mbedtls_port/trustm_ecdh.c|lib/mbedtls_port/trustm_random.c|lib/optiga-trust-m/pal/xmc4800/pal_logger.c|lib/optiga-trust-m/examples/optiga/usecases/example_optiga_hibernate_restore.c|lib/optiga-trust-m/examples/optiga/example_optiga_util_read_uid.c|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/IAR|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/ARM|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4700_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4500_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4100_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1100_series|lib/optiga-trust-m/utilities/cmd_process|lib/optiga-trust-m/examples/tools|lib/optiga-trust-m/examples/utilities/cmd_process|lib/trustm/externals|lib/trustm/pal/xmc4800_freertos/global_ccu4|lib/trustm/pal/xmc4800_freertos/interrupt|lib/trustm/pal/xmc4800_freertos/timer" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
+						<entry excluding="lib/optiga-trust-m/examples/utilities/pkcs11_trustm.c|lib/mbedtls_port/trustm_ecdsa.c|lib/mbedtls_port/trustm_ecdh.c|lib/mbedtls_port/trustm_random.c|lib/optiga-trust-m/pal/xmc4800/pal_logger.c|lib/optiga-trust-m/examples/optiga/usecases/example_optiga_hibernate_restore.c|lib/optiga-trust-m/examples/optiga/example_optiga_util_read_uid.c|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/IAR|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/ARM|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4700_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4500_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4100_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1100_series|lib/optiga-trust-m/utilities/cmd_process|lib/optiga-trust-m/examples/tools|lib/optiga-trust-m/examples/utilities/cmd_process|lib/trustm/externals|lib/trustm/pal/xmc4800_freertos/global_ccu4|lib/trustm/pal/xmc4800_freertos/interrupt|lib/trustm/pal/xmc4800_freertos/timer" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -208,9 +208,11 @@
 								<option id="com.ifx.xmc4000.compiler.option.misc.mfloat.1807821438" name="Floating point" superClass="com.ifx.xmc4000.compiler.option.misc.mfloat" useByScannerDiscovery="false" value="org.eclipse.cdt.cross.arm.gnu.base.option.other.mfloat.softfp" valueType="enumerated"/>
 								<option id="com.ifx.xmc4000.compiler.option.include.paths.1942328626" name="Include paths (-I)" superClass="com.ifx.xmc4000.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/mbedtls_port/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/third_party/XMCLib/2.1.20/Dave/Generated}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/optiga-trust-m/examples/optiga/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/optiga-trust-m/examples/utilities}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/optiga-trust-m/examples/utilities/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/optiga-trust-m/examples/utilities/authenticate_chip}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/optiga-trust-m/optiga/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/third_party/XMCLib/2.1.20/CMSIS/Include}&quot;"/>
@@ -219,15 +221,20 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/third_party/XMCLib/2.1.20/third_party/ESP_AT_Lib/src/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/third_party/aws/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/third_party/aws/include/private}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/third_party/pkcs11}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/third_party/aws/FreeRTOS/portable/GCC/ARM_CM4F}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/common/config_files}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/common/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/mbedtls/include}&quot;"/>
-									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/third_party/pkcs11}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/lib/mbedtls/include/mbedtls}&quot;"/>
 								</option>
 								<option id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def.1645145337" name="Defined symbols (-D)" superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.preprocessor.def" useByScannerDiscovery="false" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="XMC4800_F100x2048"/>
 									<listOptionValue builtIn="false" value="MBEDTLS_RSA_ALT"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDH_GEN_PUBLIC_ALT"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDH_COMPUTE_SHARED_ALT"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDSA_VERIFY_ALT"/>
+									<listOptionValue builtIn="false" value="MBEDTLS_ECDSA_SIGN_ALT"/>
 									<listOptionValue builtIn="false" value="TLS_SECRET_IN_TRUSTM"/>
 									<listOptionValue builtIn="false" value="USE_CMDLIB_WITH_RTOS"/>
 									<listOptionValue builtIn="false" value="PAL_OS_HAS_EVENT_INIT"/>
@@ -331,7 +338,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="lib/optiga-trust-m/pal/xmc4800/pal_logger.c|common/entropy_hardware.c|common/entropy_hardware_alt.c|lib/optiga-trust-m/examples/optiga/usecases/example_optiga_hibernate_restore.c|lib/optiga-trust-m/examples/optiga/example_optiga_util_read_uid.c|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/IAR|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/ARM|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4700_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4500_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4100_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1100_series|lib/optiga-trust-m/utilities/cmd_process|lib/optiga-trust-m/examples/tools|lib/optiga-trust-m/examples/utilities/cmd_process|lib/trustm/externals|lib/trustm/pal/xmc4800_freertos/global_ccu4|lib/trustm/pal/xmc4800_freertos/interrupt|lib/trustm/pal/xmc4800_freertos/timer" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="lib/optiga-trust-m/examples/utilities/pkcs11_trustm.c|lib/optiga-trust-m/pal/xmc4800/pal_logger.c|common/entropy_hardware.c|common/entropy_hardware_alt.c|lib/optiga-trust-m/examples/optiga/usecases/example_optiga_hibernate_restore.c|lib/optiga-trust-m/examples/optiga/example_optiga_util_read_uid.c|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/IAR|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4800_series/Source/ARM|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4700_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4500_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC4100_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1400_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1300_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1200_series|lib/third_party/XMCLib/2.1.20/CMSIS/Infineon/XMC1100_series|lib/optiga-trust-m/utilities/cmd_process|lib/optiga-trust-m/examples/tools|lib/optiga-trust-m/examples/utilities/cmd_process|lib/trustm/externals|lib/trustm/pal/xmc4800_freertos/global_ccu4|lib/trustm/pal/xmc4800_freertos/interrupt|lib/trustm/pal/xmc4800_freertos/timer" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>

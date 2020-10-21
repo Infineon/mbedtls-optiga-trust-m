@@ -218,7 +218,6 @@ void vTrustMTaskCallbackHandler( void * pvParameters )
 #if (SHOW_TRUSTM_PATH == 1)
 		configPRINTF( ( "Take Semaphore..\r\n") );
 #endif
-		pal_os_event_init();
 
 		optiga_lib_status_t open_app_status = trustm_OpenApp();
 		if (open_app_status != OPTIGA_LIB_SUCCESS)
