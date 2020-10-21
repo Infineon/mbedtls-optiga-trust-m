@@ -59,6 +59,7 @@
 #include "optiga/ifx_i2c/ifx_i2c_config.h"
 #include "mbedtls/base64.h"
 #include "trustm_chipinfo.h"
+#include "threading_alt.h"
 
 extern optiga_lib_status_t trustm_OpenApp(void);
 extern optiga_lib_status_t trustm_CloseApp(void);
@@ -92,6 +93,16 @@ extern void example_mbedtls_optiga_crypt_rsa_encrypt(void);
 extern void example_mbedtls_optiga_crypt_rsa_decrypt(void);
 
 extern void example_pair_host_and_optiga_using_pre_shared_secret(void);
+
+extern int example_mbedtls_optiga_crypt_ecc_extendedcurve_genkeypair();
+extern int example_mbedtls_optiga_crypt_ecc_extendedcurve_calsign();
+extern int example_mbedtls_optiga_crypt_ecc_extendedcurve_verify();
+extern int example_mbedtls_optiga_crypt_ecc_extendedcurve_calcssec();
+
+extern void aws_mbedtls_mutex_init( mbedtls_threading_mutex_t * mutex );
+extern void aws_mbedtls_mutex_free( mbedtls_threading_mutex_t * mutex );
+extern int aws_mbedtls_mutex_lock( mbedtls_threading_mutex_t * mutex );
+extern int aws_mbedtls_mutex_unlock( mbedtls_threading_mutex_t * mutex );
 
 extern void vStartTCPEchoClientTasks_SingleTasks( void );
 
@@ -255,6 +266,8 @@ int TRUSTM_UNIT_TEST_LOOP_COUNT=1;
 
 #define TRUSTM_RSA_TEST         0
 
+#define TRUSTM_ECC_EXTENDED_TEST 0
+
 static void prvEchoClientTask( void * pvParameters )
 {
     Socket_t xSocket;
@@ -379,6 +392,53 @@ static void prvEchoClientTask( void * pvParameters )
 	} while(FALSE);
 
 #endif
+
+#if (TRUSTM_ECC_EXTENDED_TEST == 1)
+	do{
+		mbedtls_threading_set_alt( aws_mbedtls_mutex_init,
+		                                   aws_mbedtls_mutex_free,
+		                                   aws_mbedtls_mutex_lock,
+		                                   aws_mbedtls_mutex_unlock );
+
+		configPRINTF( ( "ECC Extended curve examples\r\n") );
+		if(0 != example_mbedtls_optiga_crypt_ecc_extendedcurve_genkeypair())
+		{
+			configPRINTF( ( "Genkey pair example test failed\n") );
+			break;
+		}
+
+		configPRINTF( ( "ECC Extended curve Genkey pair example executed successfully\r\n") );
+
+		if(0 != example_mbedtls_optiga_crypt_ecc_extendedcurve_calsign())
+		{
+			configPRINTF( ( "CalSign example test failed\n") );
+			break;
+		}
+
+		configPRINTF( ( "ECC Extended curve CalSign examples executed successfully\r\n") );
+
+		if(0 != example_mbedtls_optiga_crypt_ecc_extendedcurve_verify())
+		{
+			configPRINTF( ( "VerifySign example test failed\n") );
+			break;
+		}
+
+		configPRINTF( ( "ECC Extended curve VerifySign examples executed successfully\r\n") );
+
+		if(0 != example_mbedtls_optiga_crypt_ecc_extendedcurve_calcssec())
+		{
+			configPRINTF( ( "CalSSec example test failed\n") );
+			break;
+		}
+
+		configPRINTF( ( "ECC Extended curve CalSSec examples executed successfully\n") );
+
+		configPRINTF( ( "ECC Extended curve example successful\n") );
+
+	} while(FALSE);
+
+#endif
+
 #endif
 #endif
 

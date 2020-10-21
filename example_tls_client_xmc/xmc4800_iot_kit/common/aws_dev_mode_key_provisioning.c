@@ -455,7 +455,7 @@ void vDevModeKeyProvisioning( void )
 #if (SHOW_PROVISION_PATH == 1)
     configPRINTF( ( ">vDevModeKeyProvisioning()\r\n" ) );
 #endif
-    xParams.ulClientPrivateKeyType = CKK_RSA;
+    xParams.ulClientPrivateKeyType = CKK_EC;
     xParams.pcClientPrivateKey = ( uint8_t * ) clientcredentialCLIENT_PRIVATE_KEY_PEM;
     xParams.ulClientPrivateKeyLength = clientcredentialCLIENT_PRIVATE_KEY_LENGTH;
     xParams.pcClientCertificate = ( uint8_t * ) clientcredentialCLIENT_CERTIFICATE_PEM;
