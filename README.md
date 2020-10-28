@@ -66,11 +66,11 @@ Select the active project profile as "TLS_client_secret_in_trustm". This project
 
 Right-click on the project name and select "properties". Click on "New..." to create a new debug instance. Select GDB SEGGER J-Link Debugging followed by selecting the image to load and debug.
 
-![Debug 1](extra/pictures/debug1.jpg)
+![Debug 1](extra/pictures/debug1.JPG)
 ![Debug 2](extra/pictures/debug2.png)
-![Debug 3](extra/pictures/debug3.jpg)
-![Debug 4](extra/pictures/debug4.jpg)
-![Debug 5](extra/pictures/debug5.jpg)
+![Debug 3](extra/pictures/debug3.JPG)
+![Debug 4](extra/pictures/debug4.JPG)
+![Debug 5](extra/pictures/debug5.JPG)
 
 From the menu select Project->Build Active Project. The project should be compiled with no error.
 
