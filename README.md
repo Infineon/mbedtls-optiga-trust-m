@@ -795,8 +795,8 @@ mbedtls macros for curves.
 
 For example : If Nist P-384 need be used for key exchange, then disable the MBEDTLS_ECP_DP_SECP521R1_ENABLED macro.
 ```
-2. Based on the enabled ECC curve, OPTIGA<sup>TM</sup> Trust M Security chip need to personalized with client private key and certificate of enabled curve type.Client CA certficate used to sign the End entity certficate also need be of one of the enabled curve.<br>
-3. By default Certficate data object is set to 0xE0E0. If certficate is personalized in different data object, set the data object to **OID** variable in **void vTrustMTaskCallbackHandler( void * pvParameters )** under below file.
+2. Based on the enabled ECC curve, OPTIGA<sup>TM</sup> Trust M Security chip need to personalized with client private key and certificate of enabled curve type.Client CA certificate used to sign the End entity certificate also need be of one of the enabled curve.<br>
+3. By default Certificate data object is set to 0xE0E0. If certificate is personalized in different data object, set the data object to **OID** variable in **void vTrustMTaskCallbackHandler( void * pvParameters )** under below file.
 ```console
 mbedtls-optiga-trust-m\example_tls_client_xmc\xmc4800_iot_kit\common\optiga_trust_m.c
 ```
@@ -804,8 +804,8 @@ mbedtls-optiga-trust-m\example_tls_client_xmc\xmc4800_iot_kit\common\optiga_trus
 ```console
 mbedtls-optiga-trust-m\lib\optiga-trust-m\examples\mbedtls_port\trustm_ecdsa.c
 ```
-5. Similarily Server side End Entity and CA certficate need to be generated with the curves enabled at the client side<br>
-6. After generating the Client and server certificate, the Client CA key, Client CA certficate, Server End entity key and Server End Entity certficate must be copied to the server side under below location and rename the file name as expected by the server side<br>
+5. Similarily Server side End Entity and CA certificate need to be generated with the curves enabled at the client side<br>
+6. After generating the Client and server certificate, the Client CA key, Client CA certificate, Server End entity key and Server End Entity certificate must be copied to the server side under below location and rename the file name as expected by the server side<br>
 ```console
 mbedtls-optiga-trust-m\example_tls_server_remote\rpi\credential
 ```
