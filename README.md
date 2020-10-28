@@ -54,29 +54,29 @@ Once, DAVE IDE has been downloaded and installed, the TLS client can be download
 __Note: Please keep in mind there is submodule included, you need to clone with the `--recurse-submodules` option; i.e.:__
 
 ```c
-$ git clone --recurse-submodules  https://github.com/Infineon/mbedtls-optiga-trust-m.git
+$ git clone -b feature/rsa --recurse-submodules  https://github.com/Infineon/mbedtls-optiga-trust-m.git
 ```
 
-Import the DAVE project from the following path <amazon-freertos-optiga-trust-m>\example_tls_client_xmc\infineon\xmc4800_iotkit_trustm\dave4\
+Import the DAVE project from the following path:<br> mbedtls-optiga-trust-m\example_tls_client_xmc\xmc4800_iot_kit
 
 ![Import TLS client](extra/pictures/import.png)
 
 Select the active project profile as "TLS_client_secret_in_trustm". This project enables MACRO which uses Trust M to stores the secret key.
-![Select active project](extra/pictures/active.png)
+![Select active project](extra/pictures/active.jpg)
 
 Right-click on the project name and select "properties". Click on "New..." to create a new debug instance. Select GDB SEGGER J-Link Debugging followed by selecting the image to load and debug.
 
-![Debug 1](extra/pictures/debug1.png)
+![Debug 1](extra/pictures/debug1.jpg)
 ![Debug 2](extra/pictures/debug2.png)
-![Debug 3](extra/pictures/debug3.png)
-![Debug 4](extra/pictures/debug4.png)
-![Debug 5](extra/pictures/debug5.png)
+![Debug 3](extra/pictures/debug3.jpg)
+![Debug 4](extra/pictures/debug4.jpg)
+![Debug 5](extra/pictures/debug5.jpg)
 
 From the menu select Project->Build Active Project. The project should be compiled with no error.
 
 Click on the execute debug button and the project will be launched and a breakpoint halt in main().
 
-![Debug 6](extra/pictures/debug6.png)
+![Debug 6](extra/pictures/debug6.jpg)
 
 A serial terminal with the following settings can be launched to monitor the output.
 Baud:9600
@@ -188,7 +188,7 @@ $sudo gpasswd -a $USER wireshark
 
 5. Install Go Programming
 ```console
-wget https://storage.googleapis.com/golang/go1.10.1.linux-armv6l.tar.gz
+wget https://storage.googleapis.com/golang/go1.15.3.linux-armv6l.tar.gz
 sudo tar -C /usr/local -xvf go1.10.1.linux-armv6l.tar.gz
 cat >> ~/.bashrc << 'EOF'
 export GOPATH=$HOME/go
@@ -712,6 +712,12 @@ example_mbedtls_optiga_crypt_rsa_verify();<br>
 example_mbedtls_optiga_crypt_rsa_encrypt();<br>
 example_mbedtls_optiga_crypt_rsa_decrypt();<br>
 
+Set the macro **TRUSTM_ECC_EXTENDED_TEST** to "1" to turn on unit test cases for mbedTLS ECC APIs that are implemented using OPTIGA™ Trust M fro extended curves.
+example_mbedtls_optiga_crypt_ecc_extendedcurve_genkeypair();<br>
+example_mbedtls_optiga_crypt_ecc_extendedcurve_calsign();<br>
+example_mbedtls_optiga_crypt_ecc_extendedcurve_verify();<br>
+example_mbedtls_optiga_crypt_ecc_extendedcurve_calcssec();<br>
+
 ## Appendix D: TLS handshake and record exchange using RSA and ECC algorithm
 <details>
 <summary><font size="+1">Expand Image for RSA</font></summary>
@@ -733,24 +739,69 @@ In order to use RSA algorithm instead of default ECC algorithm, following change
 2. Set the preset ciphersuite for RSA as MBEDTLS_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 and MBEDTLS_TLS_RSA_WITH_AES_128_GCM_SHA256. This has to be updated in ssl_preset_suiteb_ciphersuites variable in ../lib/mbedtls/library/ssl_tls.c
 3. If the server CA cerficate is modified, it must be copied in constant cTlsECHO_SERVER_CERTIFICATE_PEM defined in source file ../common/aws_tcp_echo_client_single_task.c
 4. If the client keypair is modified, it must be copied in macro keyCLIENT_PRIVATE_KEY_PEM defined in header file ../common/include/aws_clientcredential.h
-5. The below configurations must be updated in vDevModeKeyProvisioning API defined in source file ../common/aws_dev_mode_key_provisioning.c :
+5. Enable the macro MBEDTLS_KEY_EXCHANGE_RSA_ENABLED in mbedtls config file to suport RSA based key exchange algorithm in the file mbedtls-optiga-trust-m\lib\mbedtls\include\config.h
+6. The below configurations must be updated in vDevModeKeyProvisioning API defined in source file ../common/aws_dev_mode_key_provisioning.c :
 ```console
 xParams.ulClientPrivateKeyType = CKK_RSA;
 xParams.pcClientCertificate = NULL;
 xParams.ulClientCertificateLength = 0;
 ```	
-6. The below RSA server certificate and keys must be kept at the server:
+7. By default mbedtls supports RSA2048 and above key length. In order to support RSA 1024, Change the key length support to RSA 1024 in the **x509_crt.c** file under<br> mbedtls-optiga-trust-m\lib\mbedtls\library path as shown below
+```console
+const mbedtls_x509_crt_profile mbedtls_x509_crt_profile_default =
+{
+#if defined(MBEDTLS_TLS_DEFAULT_ALLOW_SHA1_IN_CERTIFICATES)
+    /* Allow SHA-1 (weak, but still safe in controlled environments) */
+    MBEDTLS_X509_ID_FLAG( MBEDTLS_MD_SHA1 ) |
+#endif
+    /* Only SHA-2 hashes */
+    MBEDTLS_X509_ID_FLAG( MBEDTLS_MD_SHA224 ) |
+    MBEDTLS_X509_ID_FLAG( MBEDTLS_MD_SHA256 ) |
+    MBEDTLS_X509_ID_FLAG( MBEDTLS_MD_SHA384 ) |
+    MBEDTLS_X509_ID_FLAG( MBEDTLS_MD_SHA512 ),
+    0xFFFFFFF, /* Any PK alg    */
+    0xFFFFFFF, /* Any curve     */
+    1024,
+};
+```
+8. The below RSA server certificate and keys must be kept at the server:
 The following steps show how to update the server for RSA 1024 key
  ```console
 CA_RSA_1024.pem
 SERVER.RSA_1024_CERT.pem
 SERVER_1024_KEY_PAIR.pem 
 ```
-7. For RSA sign and decryption, the private key must be stored in OID 0xE0FC.
-8. The Client Trust Anchor must be stored in OID 0xE0E0.
-9. The RSA algorithm server, client keypair and trust anchors are stored in location ../extra/TrustM Certificates/RSA_certificate_and_key
+9. For RSA sign and decryption, the private key must be stored in OID 0xE0FC.
+10. The Client Trust Anchor must be stored in OID 0xE0E0.
+11. The RSA algorithm server, client keypair and trust anchors are stored in location ../extra/TrustM Certificates/RSA_certificate_and_key
 
-## Appendix E: Shielded connection configuration
+## Appendix E: Selecting specific ECC curve for TLS Handshake. 
+
+By default Nist P-256, Nist P-384 and Nist P-521 ECC curves are enabled and based on priority Nist P-521 will be selected for Key exchange during TLS Handshake 
+In order to run TLS handshake with a Specific ECC curve enabled, following changes are to be done<br>
+
+1. Enable the specific ECC curve which required to be used for key exchange and all curve whose key length is below the required curve in mbedtls **config.h** file under below path<br>
+mbedtls-optiga-trust-m\lib\mbedtls\include\mbedtls<br>
+mbedtls macros for curves.
+ ```console
+#define MBEDTLS_ECP_DP_SECP256R1_ENABLED
+#define MBEDTLS_ECP_DP_SECP384R1_ENABLED
+#define MBEDTLS_ECP_DP_SECP521R1_ENABLED
+
+For example : If Nist P-384 need be used for key exchange, then disable the MBEDTLS_ECP_DP_SECP521R1_ENABLED macro.<br>
+```
+2. Based on the enabled ECC curve, OPTIGA<sup>TM</sup> Trust M Security chip need to personalized with client private key and certificate of enabled curve type.Client CA certficate used to sign the End entity certficate also need be of one of the enabled curve.<br>
+3. Similarily Server side End Entity and CA certficate need to be generated with the curves enabled at the client side<br>
+4. After generating the Client and server certificate, the Client CA key, Client CA certficate, Serer End entity key and Server End Entity certficate must be copied to the server side under below location and rename the file name as expected by the server side<br>
+```console
+mbedtls-optiga-trust-m\example_tls_server_remote\rpi\credential<br>
+```
+5. Copy the content of server CA cerficate under constant cTlsECHO_SERVER_CERTIFICATE_PEM defined in source file<br>
+```console
+mbedtls-optiga-trust-m\example_tls_client_xmc\xmc4800_iot_kit\common<br>
+```
+
+## Appendix F: Shielded connection configuration
 
 In order to run TLS handshake and record exchange with shielded connection enabled, following changes are to be done:
 1. OPTIGA_COMMS_SHIELDED_CONNECTION macro should be defined in header file ../lib/optiga-trust-m/optiga/include/optiga/optiga_lib_config.h
