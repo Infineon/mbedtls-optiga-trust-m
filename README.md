@@ -67,7 +67,7 @@ Select the active project profile as "TLS_client_secret_in_trustm". This project
 Right-click on the project name and select "properties". Click on "New..." to create a new debug instance. Select GDB SEGGER J-Link Debugging followed by selecting the image to load and debug.
 
 ![Debug 1](extra/pictures/debug1.JPG)
-![Debug 2](extra/pictures/debug2.png)
+![Debug 2](extra/pictures/debug2.JPG)
 ![Debug 3](extra/pictures/debug3.JPG)
 ![Debug 4](extra/pictures/debug4.JPG)
 ![Debug 5](extra/pictures/debug5.JPG)
@@ -76,7 +76,7 @@ From the menu select Project->Build Active Project. The project should be compil
 
 Click on the execute debug button and the project will be launched and a breakpoint halt in main().
 
-![Debug 6](extra/pictures/debug6.jpg)
+![Debug 6](extra/pictures/debug6.JPG)
 
 A serial terminal with the following settings can be launched to monitor the output.
 Baud:9600
@@ -739,14 +739,17 @@ In order to use RSA algorithm instead of default ECC algorithm, following change
 2. Set the preset ciphersuite for RSA as MBEDTLS_TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 and MBEDTLS_TLS_RSA_WITH_AES_128_GCM_SHA256. This has to be updated in ssl_preset_suiteb_ciphersuites variable in ../lib/mbedtls/library/ssl_tls.c
 3. If the server CA cerficate is modified, it must be copied in constant cTlsECHO_SERVER_CERTIFICATE_PEM defined in source file ../common/aws_tcp_echo_client_single_task.c
 4. If the client keypair is modified, it must be copied in macro keyCLIENT_PRIVATE_KEY_PEM defined in header file ../common/include/aws_clientcredential.h
-5. Enable the macro MBEDTLS_KEY_EXCHANGE_RSA_ENABLED in mbedtls config file to suport RSA based key exchange algorithm in the file mbedtls-optiga-trust-m\lib\mbedtls\include\config.h
+5. Enable the macro MBEDTLS_KEY_EXCHANGE_RSA_ENABLED in mbedtls config file to support RSA based key exchange 
+```console
+File path : mbedtls-optiga-trust-m\lib\mbedtls\include\config.h
+```
 6. The below configurations must be updated in vDevModeKeyProvisioning API defined in source file ../common/aws_dev_mode_key_provisioning.c :
 ```console
 xParams.ulClientPrivateKeyType = CKK_RSA;
 xParams.pcClientCertificate = NULL;
 xParams.ulClientCertificateLength = 0;
 ```	
-7. By default mbedtls supports RSA2048 and above key length. In order to support RSA 1024, Change the key length support to RSA 1024 in the **x509_crt.c** file under<br> mbedtls-optiga-trust-m\lib\mbedtls\library path as shown below
+7. By default mbedtls supports RSA2048 and above key length. In order to support RSA 1024, Change the key length to RSA 1024 in the **x509_crt.c** file under<br> mbedtls-optiga-trust-m\lib\mbedtls\library path as shown below
 ```console
 const mbedtls_x509_crt_profile mbedtls_x509_crt_profile_default =
 {
@@ -777,28 +780,42 @@ SERVER_1024_KEY_PAIR.pem
 
 ## Appendix E: Selecting specific ECC curve for TLS Handshake. 
 
-By default Nist P-256, Nist P-384 and Nist P-521 ECC curves are enabled and based on priority Nist P-521 will be selected for Key exchange during TLS Handshake 
+By default Nist P-256, Nist P-384 and Nist P-521 ECC curves are enabled and based on priority Nist P-521 will be selected for Key exchange during TLS Handshake.<br> 
 In order to run TLS handshake with a Specific ECC curve enabled, following changes are to be done<br>
 
 1. Enable the specific ECC curve which required to be used for key exchange and all curve whose key length is below the required curve in mbedtls **config.h** file under below path<br>
-mbedtls-optiga-trust-m\lib\mbedtls\include\mbedtls<br>
+```console
+mbedtls-optiga-trust-m\lib\mbedtls\include\mbedtls
+```
 mbedtls macros for curves.
  ```console
 #define MBEDTLS_ECP_DP_SECP256R1_ENABLED
 #define MBEDTLS_ECP_DP_SECP384R1_ENABLED
 #define MBEDTLS_ECP_DP_SECP521R1_ENABLED
 
-For example : If Nist P-384 need be used for key exchange, then disable the MBEDTLS_ECP_DP_SECP521R1_ENABLED macro.<br>
+For example : If Nist P-384 need be used for key exchange, then disable the MBEDTLS_ECP_DP_SECP521R1_ENABLED macro.
 ```
 2. Based on the enabled ECC curve, OPTIGA<sup>TM</sup> Trust M Security chip need to personalized with client private key and certificate of enabled curve type.Client CA certficate used to sign the End entity certficate also need be of one of the enabled curve.<br>
-3. Similarily Server side End Entity and CA certficate need to be generated with the curves enabled at the client side<br>
-4. After generating the Client and server certificate, the Client CA key, Client CA certficate, Serer End entity key and Server End Entity certficate must be copied to the server side under below location and rename the file name as expected by the server side<br>
+3. By default Certficate data object is set to 0xE0E0. If certficate is personalized in different data object, set the data object to **OID** variable in **void vTrustMTaskCallbackHandler( void * pvParameters )** under below file.
 ```console
-mbedtls-optiga-trust-m\example_tls_server_remote\rpi\credential<br>
+mbedtls-optiga-trust-m\example_tls_client_xmc\xmc4800_iot_kit\common\optiga_trust_m.c
 ```
-5. Copy the content of server CA cerficate under constant cTlsECHO_SERVER_CERTIFICATE_PEM defined in source file<br>
+4. By default private key object is set to 0xE0F0. If private key is personalized in different key object, set the key object to **CONFIG_OPTIGA_TRUST_M_PRIVKEY_SLOT** macro under below file.
 ```console
-mbedtls-optiga-trust-m\example_tls_client_xmc\xmc4800_iot_kit\common<br>
+mbedtls-optiga-trust-m\lib\optiga-trust-m\examples\mbedtls_port\trustm_ecdsa.c
+```
+5. Similarily Server side End Entity and CA certficate need to be generated with the curves enabled at the client side<br>
+6. After generating the Client and server certificate, the Client CA key, Client CA certficate, Server End entity key and Server End Entity certficate must be copied to the server side under below location and rename the file name as expected by the server side<br>
+```console
+mbedtls-optiga-trust-m\example_tls_server_remote\rpi\credential
+```
+7. Copy the content of server CA cerficate under constant cTlsECHO_SERVER_CERTIFICATE_PEM defined in source file<br>
+```console
+mbedtls-optiga-trust-m\example_tls_client_xmc\xmc4800_iot_kit\common
+```
+8. Copy any keypair whose curve type is same as private key personalized in OPTIGA<sup>TM</sup> Trust M Security under constant keyCLIENT_PRIVATE_KEY_PEM(present under TLS_SECRET_IN_TRUSTM macro) defined in header file **aws_clientcredential.h** in below path.
+```console
+mbedtls-optiga-trust-m\example_tls_client_xmc\xmc4800_iot_kit\common\include
 ```
 
 ## Appendix F: Shielded connection configuration
