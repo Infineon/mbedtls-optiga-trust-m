@@ -189,7 +189,7 @@ $sudo gpasswd -a $USER wireshark
 5. Install Go Programming
 ```console
 wget https://storage.googleapis.com/golang/go1.15.3.linux-armv6l.tar.gz
-sudo tar -C /usr/local -xvf go1.10.1.linux-armv6l.tar.gz
+sudo tar -C /usr/local -xvf go1.15.3.linux-armv6l.tar.gz
 cat >> ~/.bashrc << 'EOF'
 export GOPATH=$HOME/go
 export PATH=/usr/local/go/bin:$PATH:$GOPATH/bin
