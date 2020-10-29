@@ -5,7 +5,7 @@ This repository contains one of the Application Notes for OPTIGA<sup>TM</sup> Tr
 __Note: Please keep in mind there is submodule included, you need to clone with the `--recurse-submodules` option; i.e.:__
 
 ```c
-$ git clone --recurse-submodules  https://github.com/Infineon/mbedtls-optiga-trust-m.git
+$ git clone -b feature/rsa --recurse-submodules  https://github.com/Infineon/mbedtls-optiga-trust-m.git
 ```
 
 # Table of Contents
