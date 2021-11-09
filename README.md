@@ -57,11 +57,12 @@ __Note: Please keep in mind there is submodule included, you need to clone with 
 $ git clone --recurse-submodules  https://github.com/Infineon/mbedtls-optiga-trust-m.git
 ```
 
-Import the DAVE project from the following path <amazon-freertos-optiga-trust-m>\example_tls_client_xmc\infineon\xmc4800_iotkit_trustm\dave4\
+Import (File -> Import ... -> Existing Project into Workspace) the project from the following path `mbedtls-optiga-trust-m\example_tls_client_xmc\xmc4800_iot_kit`
 
 ![Import TLS client](extra/pictures/import.png)
 
-Select the active project profile as "TLS_client_secret_in_trustm". This project enables MACRO which uses Trust M to stores the secret key.
+Select the project, right-click on it and press "Set Active Project", then select the profile in "Build Configurations" -> "Set Active" -> "TLS_client_secret_in_trustm". This project enables MACRO which uses Trust M to stores the secret key.
+
 ![Select active project](extra/pictures/active.png)
 
 Right-click on the project name and select "properties". Click on "New..." to create a new debug instance. Select GDB SEGGER J-Link Debugging followed by selecting the image to load and debug.
