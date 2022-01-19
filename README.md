@@ -1,4 +1,4 @@
-# TLS client implementation using<br/> MbedTLS crypto library with OPTIGA™ Trust M V1
+# TLS client implementation using<br/> MbedTLS crypto library with OPTIGA™ Trust M
 
 This repository contains one of the Application Notes for OPTIGA<sup>TM</sup> Trust M V1 security chip, showing how to perform TLS handshake with mutual authentication with an echo TLS server. The TLS client is implemented using XMC4800 running FreeRTOS version 10.2 (adopted from AWS FreeRTOS) with mbed TLS. Several server options are also provided with this application note as reference.
 
