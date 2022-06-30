@@ -89,7 +89,7 @@ const uint32_t clientcredentialCLIENT_PRIVATE_KEY_LENGTH = sizeof( clientcredent
 
 #define SHOW_PROVISION_PATH       0
 
-uint8_t TrustM_device_cert [512];
+uint8_t TrustM_device_cert [800];
 size_t TrustM_Cert_Len = 0;
 /*-----------------------------------------------------------*/
 

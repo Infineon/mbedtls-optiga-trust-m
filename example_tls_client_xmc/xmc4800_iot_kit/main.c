@@ -49,7 +49,7 @@ extern void vStartTCPEchoClientTasks_SingleTasks( void );
 
 /* Logging Task Defines. */
 #define mainLOGGING_MESSAGE_QUEUE_LENGTH    ( 15 )
-#define mainLOGGING_TASK_STACK_SIZE         ( configMINIMAL_STACK_SIZE * 8 )
+#define mainLOGGING_TASK_STACK_SIZE         ( configMINIMAL_STACK_SIZE * 20 )
 
 /* The task delay for allowing the lower priority logging task to print out Wi-Fi 
  * failure status before blocking indefinitely. */

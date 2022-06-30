@@ -29,9 +29,9 @@ extern optiga_lib_status_t trustm_CloseApp(void);
 #define SHOW_TRUSTM_PATH            0
 
 ///size of end entity certificate of OPTIGA™ Trust M
-#define LENGTH_OPTIGA_CERT          512
+#define LENGTH_OPTIGA_CERT          800
 
-extern uint8_t TrustM_device_cert[480];
+extern uint8_t TrustM_device_cert[800];
 extern size_t TrustM_Cert_Len;
 
 extern void vStartTCPEchoClientTasks_SingleTasks( void );
