@@ -77,7 +77,9 @@ func main() {
 	//Setup client trust anchor
 	if arg=="ifx"{
 		sRootCA = "credential/Infineon_OPTIGA_TrustM_CA_101.pem"
-	}else{
+	} else if arg=="ifx300"{
+		sRootCA = "credential/Infineon_OPTIGA_TrustM_CA_300.pem"
+	} else {
 		sRootCA="credential/client.cert.pem"
 	}
 
